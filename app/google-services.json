@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "16609501034",
+    "project_id": "celermailapp",
+    "storage_bucket": "celermailapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16609501034:android:e047cd76cf8c6d77910f13",
+        "android_client_info": {
+          "package_name": "com.celerapps.celermail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16609501034-rvijdnhb4f2gfc41ak85073j11hr502i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI_gXIW90oq9vWuthSUo0xKZNk_lz7s9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16609501034-rvijdnhb4f2gfc41ak85073j11hr502i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,68 @@
+<resources>
+            <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed elit lacus. Maecenas imperdiet eleifend felis et faucibus. Etiam libero est, pulvinar eget aliquet eget, mollis eu libero. In maximus nisl at elit tincidunt euismod. Duis luctus urna vitae purus mollis elementum. Praesent consectetur dui id dui pretium viverra. Aenean sit amet sollicitudin nulla.
+
+        Sed tempus sit amet nibh eu porta. Nullam ac quam sed ex sodales iaculis. Pellentesque vel pulvinar risus. Praesent maximus nisi nunc, a aliquet neque ullamcorper ut. Nam leo neque, elementum non dolor eget, tincidunt mattis purus. Fusce et ex ut nibh pretium ornare ac eu tortor. Nam at leo aliquam, laoreet neque euismod, volutpat est. Proin nec neque congue, pulvinar eros luctus, tincidunt ligula. Duis accumsan dolor convallis enim suscipit commodo.</string>
+    <string name="app_name">CelerMail</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Celer Admin</string>
+    <string name="nav_header_subtitle">celeradmin@cmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="login">Home</string>
+    <string name="register">Registro</string>
+    <string name="registerTerms">Registro / Términos</string>
+    <string name="registerPrivacy">Registro / Privacidad</string>
+    <string name="registerData">Registro / Datos</string>
+    <string name="terms">Términos y condiciones</string>
+    <string name="privacy">Política de privacidad</string>
+    <string name="title_activity_inbox">InboxActivity</string>
+
+    <string name="inbox">Entrada</string>
+    <string name="archived">Archivado</string>
+    <string name="drafts">Borradores</string>
+    <string name="spam">Spam</string>
+    <string name="sent">Enviados</string>
+    <string name="bin">Papelera</string>
+
+    <string name="myAccount">Mi cuenta</string>
+    <string name="exit">Salir</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="composeMail">Nuevo mensaje</string>
+    <string name="send">Enviar</string>
+    <string name="next">Siguiente</string>
+    <string name="back">Volver</string>
+    <string name="changePassword">Cambiar contraseña</string>
+    <string name="saveChanges">Guardar cambios</string>
+    <string name="title_activity_my_account">MyAccountActivity</string>
+
+    <string name="menu_personal_data">Datos personales</string>
+    <string name="menu_accounts">Cuentas</string>
+    <string name="backToInbox">Volver a la bandeja de entrada</string>
+    <string name="rememberPassword">Recordar contraseña</string>
+    <string name="documents">Documentos</string>
+
+    <string name="description">Descripción</string>
+    <string name="search">Búsqueda</string>
+    <string name="InvitationCode">Código de invitación</string>
+    <string name="introduce_code">Introduzca su código</string>
+    <string name="data">Datos</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="msg">Mensaje</string>
+    <string name="profilePicture">Foto de perfil</string>
+    <string name="setImage">Seleccionar imagen</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Borrar</string>
+    <string name="auth_failed">Fallo de autenticación</string>
+    <string name="important">Importante</string>
+    <string name="notImpotant">No importante</string>
+    <string name="move">Mover</string>
+    <string name="changeName">Cambiar nombre</string>
+    <string name="setAsImportant">Marcar como importante</string>
+    <string name="setAsViewed">Marcar como visto</string>
+
+</resources>

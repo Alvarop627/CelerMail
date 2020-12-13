@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".inboxGroup.mailViewer.views.MailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarMail"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/white"
+                app:popupTheme="@style/AppTheme"
+                app:title="@string/msg" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/ContainerStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="3"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="200dp"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/user_circle" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingLeft="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txtMailSender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:text="Juan Peralta Rivas"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/flagImportantMailMsg"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:visibility="gone"
+                                    app:srcCompat="@drawable/flag" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/txtMailSubject"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Actualización de álbum"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/txtMailReceiver"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="To: nombre"
+                                android:textColor="@color/darkGrey"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp">
+
+                        <Button
+                            android:id="@+id/btnA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/forward" />
+
+                        <Button
+                            android:id="@+id/btnB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/reply" />
+
+                        <Button
+                            android:id="@+id/button13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/reply_all" />
+
+                        <Button
+                            android:id="@+id/button16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/move" />
+
+                        <Button
+                            android:id="@+id/button17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bin" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtMailMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem fistrum pecador a gramenawer tiene musho peligro no te digo trigo por no llamarte Rodrigor llevame al sircoo. No te digo trigo por no llamarte Rodrigor te voy a borrar el cerito quietooor pecador no te digo trigo por no llamarte Rodrigor sexuarl está la cosa muy malar. La caidita quietooor diodenoo ese hombree diodenoo. Por la gloria de mi madre fistro amatomaa benemeritaar amatomaa la caidita. No puedor me cago en tus muelas papaar papaar jarl sexuarl de la pradera. Mamaar está la cosa muy malar tiene musho peligro por la gloria de mi madre benemeritaar diodeno de la pradera fistro. Ese hombree hasta luego Lucas te voy a borrar el cerito diodenoo papaar papaar."
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+
+                    <LinearLayout
+                        android:id="@+id/buttonsMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnShowMailHistory"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/expand"
+                            android:scaleType="centerCrop" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameMailHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                </FrameLayout>
+
+                <LinearLayout
+                    style="@style/ContainerStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layoutTitleAttachments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView20"
+                            android:layout_width="20dp"
+                            android:layout_height="30dp"
+                            app:srcCompat="@drawable/attachments" />
+
+                        <TextView
+                            android:id="@+id/textView118"
+                            style="@style/Sections"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dp"
+                            android:text="Adjuntos"
+                            android:textSize="18sp" />
+
+                        <ImageButton
+                            android:id="@+id/imgArrowMailAtt"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/arrow_down" />
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/listViewReceivedMailAttach"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:visibility="gone">
+
+                    </ListView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

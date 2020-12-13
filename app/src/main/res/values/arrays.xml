@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="id">
+        <item>NIF</item>
+        <item>Pasaporte</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Hombre</item>
+        <item>Mujer</item>
+    </string-array>
+
+    <string-array name="nationality">
+        <item>Español</item>
+        <item>Alemán</item>
+        <item>Italiano</item>
+        <item>Francés</item>
+    </string-array>
+
+    <string-array name="countries">
+        <item>España</item>
+        <item>Alemania</item>
+        <item>Italia</item>
+        <item>Francia</item>
+    </string-array>
+
+    <string-array name="emailType">
+        <item>IMAP</item>
+        <item>POP3</item>
+    </string-array>
+
+    <string-array name="emailSections">
+        <item>Todos</item>
+        <item>Entrada</item>
+        <item>Archivado</item>
+        <item>Borradores</item>
+        <item>Spam</item>
+        <item>Enviados</item>
+        <item>Papelera</item>
+    </string-array>
+
+</resources>

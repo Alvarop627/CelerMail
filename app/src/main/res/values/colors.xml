@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF671D</color>
+    <color name="colorLayoutFab">#A6000000</color>
+    <color name="colorPrimaryLight">#ffff8800</color>
+    <color name="colorSecondary">#000000</color>
+    <color name="colorSecondaryDark">#545454</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="lightGrey">#E6E6E6</color>
+    <color name="darkGrey">#999999</color>
+    <color name="darkestGrey">#333333</color>
+    <color name="dodgerBlue"> #1E90FF</color>
+    <color name="black"> #000000</color>
+    <color name="white"> #FFFFFF</color>
+    <color name="red"> #FF0000</color>
+    <color name="darkCerulean">#08457E</color>
+    <color name="importantMail">#CC6666</color>
+    <color name="viewedMail">#7FA8E5</color>
+    <color name="notViewedMail">#8FEAA2</color>
+
+</resources>

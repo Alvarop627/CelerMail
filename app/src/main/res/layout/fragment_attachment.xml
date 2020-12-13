@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imgAttachmentType"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:srcCompat="@drawable/file_chooser_dialog_ic_file_document"
+        app:tint="@color/darkestGrey" />
+
+    <TextView
+        android:id="@+id/txtAttachment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/darkestGrey"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/btnRmAttachment"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:tint="@color/darkestGrey"
+        app:srcCompat="@drawable/bin" />
+</LinearLayout>

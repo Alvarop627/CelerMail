@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.celerapps.celermail">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".utils.App"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.celerapps.celermail.home.views.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".registerGroup.regForm.views.RegFormActivity"/>
+        <activity android:name=".registerGroup.privacy.views.PrivacyActivity" />
+        <activity android:name=".registerGroup.terms.views.TermsActivity" />
+        <activity android:name=".inboxGroup.inboxMenu.views.InboxMenuActivity" />
+        <activity android:name=".inboxGroup.inbox.views.InboxActivity" />
+        <activity android:name=".inboxGroup.search.views.SearchActivity" />
+        <activity android:name=".inboxGroup.mailViewer.views.MailActivity" />
+        <activity android:name=".inboxGroup.attachments.views.AttachmentsActivity" />
+        <activity android:name=".inboxGroup.mailComposer.views.MailComposerActivity" />
+    </application>
+
+</manifest>

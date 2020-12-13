@@ -1,0 +1,68 @@
+<resources>
+            <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed elit lacus. Maecenas imperdiet eleifend felis et faucibus. Etiam libero est, pulvinar eget aliquet eget, mollis eu libero. In maximus nisl at elit tincidunt euismod. Duis luctus urna vitae purus mollis elementum. Praesent consectetur dui id dui pretium viverra. Aenean sit amet sollicitudin nulla.
+
+        Sed tempus sit amet nibh eu porta. Nullam ac quam sed ex sodales iaculis. Pellentesque vel pulvinar risus. Praesent maximus nisi nunc, a aliquet neque ullamcorper ut. Nam leo neque, elementum non dolor eget, tincidunt mattis purus. Fusce et ex ut nibh pretium ornare ac eu tortor. Nam at leo aliquam, laoreet neque euismod, volutpat est. Proin nec neque congue, pulvinar eros luctus, tincidunt ligula. Duis accumsan dolor convallis enim suscipit commodo.</string>
+    <string name="app_name">CelerMail</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Celer Admin</string>
+    <string name="nav_header_subtitle">celeradmin@cmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="login">Home</string>
+    <string name="register">Register</string>
+    <string name="registerTerms">Register / Terms</string>
+    <string name="registerPrivacy">Register / Privacy</string>
+    <string name="registerData">Register / Personal Data</string>
+    <string name="terms">Terms and conditions</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="title_activity_inbox">InboxActivity</string>
+
+    <string name="inbox">Inbox</string>
+    <string name="archived">Archived</string>
+    <string name="drafts">Drafts</string>
+    <string name="spam">Spam</string>
+    <string name="sent">Sent</string>
+    <string name="bin">Bin</string>
+
+    <string name="myAccount">My account</string>
+    <string name="exit">Exit</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="composeMail">New message</string>
+    <string name="send">Send</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="changePassword">Change password</string>
+    <string name="saveChanges">Save changes</string>
+    <string name="title_activity_my_account">MyAccountActivity</string>
+
+    <string name="menu_personal_data">Personal Data</string>
+    <string name="menu_accounts">Accounts</string>
+    <string name="backToInbox">Return to inbox</string>
+    <string name="rememberPassword">Remember password</string>
+    <string name="documents">Documents</string>
+
+    <string name="description">Description</string>
+    <string name="search">Search</string>
+    <string name="InvitationCode">Invitation code</string>
+    <string name="introduce_code">Introduce your code</string>
+    <string name="data">Data</string>
+    <string name="username">Username</string>
+    <string name="msg">Message</string>
+    <string name="profilePicture">Profile photo</string>
+    <string name="setImage">Select image</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="important">Important</string>
+    <string name="notImpotant">Not important</string>
+    <string name="move">Move</string>
+    <string name="changeName">Change name</string>
+    <string name="setAsImportant">Set as important</string>
+    <string name="setAsViewed">Set as viewed</string>
+
+</resources>
