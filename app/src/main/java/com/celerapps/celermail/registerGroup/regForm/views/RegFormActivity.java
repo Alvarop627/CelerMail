@@ -7,6 +7,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -74,6 +77,36 @@ public class RegFormActivity extends AppCompatActivity implements IRegFormVP.Vie
         EditText txtBirthdate = findViewById(R.id.editTextBirthdate);
 
 
+        txtEmail.setText("@cmail.com");
+        txtEmail.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+        Selection.setSelection(txtEmail.getText(), txtEmail.getText().length());
+
+
+        txtEmail.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!s.toString().endsWith("@cmail.com")) {
+                    txtEmail.setText("@cmail.com");
+                    Selection.setSelection(txtEmail.getText(), txtEmail.getText().length());
+
+                }
+
+            }
+        });
 
         EditText txtPhone = findViewById(R.id.editTextPhone);
         Bitmap profilePhoto = BitmapFactory.decodeResource(getResources(),
