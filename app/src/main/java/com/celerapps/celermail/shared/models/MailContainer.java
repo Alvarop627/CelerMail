@@ -6,11 +6,27 @@ import android.os.Parcelable;
 import com.celerapps.celermail.shared.interfaces.IMail;
 import com.celerapps.celermail.shared.interfaces.IMailContainer;
 
+/**
+ * Esta clase define una cabecera de correo electrónico. Las que aparecen en la bandeja de entrada.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class MailContainer implements IMailContainer, Parcelable {
     private String mailId, folderId, sender, subject, bodyText;
     private long dateTimeInMs;
     private Boolean isImportant, isViewed;
 
+    /**
+     *
+     * @param mailId es el identificador del correo electrónico
+     * @param folderId es el identificador de la carpeta a la que pertenece
+     * @param sender es el nombre del emisor del correo
+     * @param subject es el asunto del correo
+     * @param bodyText es el texto del correo
+     * @param dateTimeInMs es la fecha en la que se envió el correo
+     * @param isImportant indica si el correo es importante o no
+     * @param isViewed indica si el correo ha sido visto o no
+     */
     public MailContainer(String mailId, String folderId, String sender, String subject, String bodyText, long dateTimeInMs, Boolean isImportant, Boolean isViewed) {
         this.mailId = mailId;
         this.folderId = folderId;
@@ -22,6 +38,10 @@ public class MailContainer implements IMailContainer, Parcelable {
         this.isViewed = isViewed;
     }
 
+    /**
+     *
+     * @param m es un correo electrónico que se introduce como parámetro para obtener su cabecera.
+     */
     public MailContainer(IMail m) {
         this.mailId = m.getId();
         this.sender = m.getSenderName();
@@ -35,6 +55,11 @@ public class MailContainer implements IMailContainer, Parcelable {
         this.folderId = "0";
     }
 
+    /**
+     *
+     * @param in
+     * Este método sirve para deserializar el objeto
+     */
     protected MailContainer(Parcel in) {
         mailId = in.readString();
         folderId = in.readString();
@@ -44,6 +69,9 @@ public class MailContainer implements IMailContainer, Parcelable {
         dateTimeInMs = in.readLong();
     }
 
+    /**
+     * Este método sirve para serializar el objeto
+     */
     public static final Creator<MailContainer> CREATOR = new Creator<MailContainer>() {
         @Override
         public MailContainer createFromParcel(Parcel in) {
@@ -55,6 +83,7 @@ public class MailContainer implements IMailContainer, Parcelable {
             return new MailContainer[size];
         }
     };
+
 
     @Override
     public String getMailId() {
@@ -96,6 +125,12 @@ public class MailContainer implements IMailContainer, Parcelable {
         return dateTimeInMs;
     }
 
+    /**
+     *
+     * @param m
+     * @return
+     * Este método sirve para comparar las cabeceras de correo por fecha y así ordenarlas de forma correcta.
+     */
     @Override
     public int compareTo(IMailContainer m) {
         int estado = -1;
@@ -114,6 +149,11 @@ public class MailContainer implements IMailContainer, Parcelable {
         return 0;
     }
 
+    /**
+     * Sirve para serializar el objeto
+     * @param dest
+     * @param flags
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mailId);
@@ -123,6 +163,10 @@ public class MailContainer implements IMailContainer, Parcelable {
         dest.writeLong(dateTimeInMs);
     }
 
+    /**
+     *
+     * @return el objeto en String
+     */
     @Override
     public String toString() {
         return "MailContainer{" +

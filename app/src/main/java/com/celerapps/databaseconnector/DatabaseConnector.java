@@ -47,6 +47,11 @@ import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
+/**
+ * Esta clase es la clase encargada de conectar mi aplicación con la base de datos.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class DatabaseConnector implements IDatabaseConnector {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth;
@@ -63,6 +68,11 @@ public class DatabaseConnector implements IDatabaseConnector {
     private List<IMailFolderInfo> defaultFoldersList = new ArrayList<>();
     private List<IMailFolderInfo> customFoldersList = new ArrayList<>();
 
+    /**
+     * Singleton databaseConnector
+     *
+     * @return
+     */
     public static DatabaseConnector getInstance() {
 
         if (databaseConnector == null) {
@@ -72,6 +82,9 @@ public class DatabaseConnector implements IDatabaseConnector {
         return databaseConnector;
     }
 
+    /**
+     * @return la cuenta seleccionada actualmente al completo
+     */
     @Override
     public IMailAccount getSelectedMailAccount() {
 
@@ -163,6 +176,7 @@ public class DatabaseConnector implements IDatabaseConnector {
         return selectedMailAccount;
     }
 
+
     public DatabaseConnector() {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -189,6 +203,14 @@ public class DatabaseConnector implements IDatabaseConnector {
     }
 
 
+    /**
+     * Devuelve un email a partir de un identificador que se recibe por parámetro.
+     *
+     * @param mailId
+     * @return
+     */
+
+    //TODO no funciona porque me da un nulo
     @Override
     public IMail getMail(String mailId) {
         final IMail[] mail = new Mail[1];
@@ -217,6 +239,12 @@ public class DatabaseConnector implements IDatabaseConnector {
         return mail[0];
     }
 
+    /**
+     * @param folderId      el identificador de la carpeta
+     * @param isUserCreated un boolean que sirve para buscar en una colección u otra de la base de datos y saber si es una carpeta creada por defecto o por el usuario.
+     * @return las cabeceras de correo de una carpeta en concreto
+     * NO SE SABE SI FUNCIONA PORQUE FALLA GET MAIL()
+     */
     @Override
     public List<IMailContainer> getMailContainers(String folderId, boolean isUserCreated) {
         List<IMailContainer> mailContainers = new ArrayList<>();
@@ -248,11 +276,20 @@ public class DatabaseConnector implements IDatabaseConnector {
         return mailContainers;
     }
 
+    /**
+     * @return una imagen y el identificador de una cuenta. Sirve para seleccionar una cuenta u otra en InboxMenu
+     */
     @Override
     public IMailAccountHeader getMailAccountHeader() {
         return this.getSelectedMailAccount().getMailAccountHeader();
     }
 
+    /**
+     * Sirve para guardar un email que se recibe por parámetro en la base de datos.
+     * FUNCIONA, pero deshabilitada para poder hacer demo con mailServiceMock.
+     *
+     * @param mMail
+     */
     @Override
     public void createMail(IMail mMail) {
         mMail.setId();
@@ -271,6 +308,12 @@ public class DatabaseConnector implements IDatabaseConnector {
 
     }
 
+    /**
+     * Sirve para crear una carpeta personalizada. Se guarda en tu cuenta en la base de datos
+     * FUNCIONA
+     *
+     * @param folderName
+     */
     @Override
     public void createAccountFolder(String folderName) {
         IMailFolderInfo mfi = new MailFolderInfo(folderName);
@@ -285,7 +328,11 @@ public class DatabaseConnector implements IDatabaseConnector {
         );
     }
 
-
+    /**
+     * Se crea una cuenta en la base de datos.
+     *
+     * @param mailAccount FUNCIONA
+     */
     public void createAccount(@NotNull IMailAccount mailAccount) {
 
 
@@ -343,6 +390,12 @@ public class DatabaseConnector implements IDatabaseConnector {
 
     }
 
+    /**
+     * Este método sirve para iniciar sesión con un email y una contraseña que se reciben por parámetros
+     *
+     * @param email    el email que introduce el usuario
+     * @param password la contraseña que introduce el usuario
+     */
     public void signIn(String email, String password) {
 
         // [START sign_in_with_email]
@@ -370,10 +423,16 @@ public class DatabaseConnector implements IDatabaseConnector {
     }
 
 
+    /**
+     * Este método sirve para cerrar la sesión
+     */
     public void signOut() {
         mAuth.signOut();
     }
 
+    /**
+     * @return el identificador del usuario
+     */
     public String getUserId() {
         FirebaseUser mFirebaseUser = mAuth.getCurrentUser();
         if (mFirebaseUser != null) {

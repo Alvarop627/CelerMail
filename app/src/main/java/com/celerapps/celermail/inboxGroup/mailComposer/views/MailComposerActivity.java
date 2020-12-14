@@ -49,6 +49,11 @@ import net.dankito.utils.android.permissions.PermissionsService;
 
 import java.io.File;
 
+/**
+ * Esta clase define una actividad donde se crea un email.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class MailComposerActivity extends AppCompatActivity implements IMailComposerView {
 
     private RichTextEditor editor;
@@ -60,6 +65,11 @@ public class MailComposerActivity extends AppCompatActivity implements IMailComp
     private IMailComposerPresenter presenter;
     private String bodyText;
 
+    /**
+     * Se ejecuta cuando se inicia la activity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,6 +157,9 @@ public class MailComposerActivity extends AppCompatActivity implements IMailComp
         ImageButton btnShowReceiverOptions = findViewById(R.id.btnShowReceiverOptions);
         EditText editTxtCC = findViewById(R.id.editTxtCC);
         EditText editTxtCCO = findViewById(R.id.editTxtCCO);
+        /**
+         * Este método hace que el CC y el CCO sean visibles o no
+         */
         btnShowReceiverOptions.setOnClickListener(v -> {
             if (editTxtCC.getVisibility() == View.GONE && editTxtCCO.getVisibility() == View.GONE) {
                 editTxtCC.setVisibility(View.VISIBLE);

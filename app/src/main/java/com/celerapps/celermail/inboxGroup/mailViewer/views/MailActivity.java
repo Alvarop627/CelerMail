@@ -27,6 +27,12 @@ import com.celerapps.celermail.shared.views.mailHistoryRow.MailHistoryFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase define la pantalla donde se visualiza un email.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
+
 public class MailActivity extends AppCompatActivity implements IMailVP.View {
 
     private IMailVP.Presenter presenter;
@@ -41,6 +47,10 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
 
         presenter = new MailPresenter(this, this);
 
+        /**
+         * A continuación se obtiene el mail con el identificador recibido en un bundle.
+         * Después, se crea el historial de mensajes, que realmente debería obtenerse de la base de datos.
+         */
         String mailId = getIntent().getStringExtra("mailId");
         IMail mail = presenter.getMail(mailId);
         IMail mailHistory1 = new Mail();
@@ -58,6 +68,9 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
         mailHistoryList.add(mailHistory1);
         mailHistoryList.add(mailHistory2);
 
+        /**
+         * Con los datos del mail obtenido se rellena la vista
+         */
         TextView txtMailSender = findViewById(R.id.txtMailSender);
         txtMailSender.setText(mail.getSenderName());
 
@@ -69,6 +82,9 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
 
         ImageView flagImportantMailMsg = findViewById(R.id.flagImportantMailMsg);
 
+        /**
+         * si es importante pone una bandera
+         */
         if(mail.isImportant()){
             flagImportantMailMsg.setVisibility(View.VISIBLE);
         }else{
@@ -82,6 +98,9 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
 
         FrameLayout frameMailHistory = findViewById(R.id.frameMailHistory);
 
+        /**
+         * crea un fragmento con el historial de correos y lo muestra o no según le des al botón.
+         */
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frameMailHistory, new MailHistoryFragment(mailHistoryList), "fragmentMailHistory");
@@ -97,6 +116,9 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
             }
         });
 
+        /**
+         * muestra o no la lista de archivos adjuntos según le das al botón.
+         */
         LinearLayout layoutTitleAttachments = findViewById(R.id.layoutTitleAttachments);
         ListView listAttachments = findViewById(R.id.listViewReceivedMailAttach);
         ImageView imgArrowMailAtt = findViewById(R.id.imgArrowMailAtt);
@@ -113,6 +135,9 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
             }
         });
 
+        /**
+         * se rellena la lista de adjuntos con adjuntos ficticios.
+         */
         final ListView listView = findViewById(R.id.listViewReceivedMailAttach);
         List<String> list = new ArrayList<>();
         addList(listView, list);
@@ -127,6 +152,11 @@ public class MailActivity extends AppCompatActivity implements IMailVP.View {
         return true;
     }
 
+    /**
+     * Crea archivos ficticios y rellena la lista con ellos.
+     * @param listView
+     * @param list
+     */
     private void addList(final ListView listView, List list){
         list.add("Archivo 1");
         list.add("Archivo 2");

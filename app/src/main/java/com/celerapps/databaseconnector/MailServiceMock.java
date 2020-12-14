@@ -20,6 +20,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Esta clase define un servicio ficticio de correo electrónico. Sirve para hacer pruebas sin necesidad de una base de datos. En un futuro se eliminará cuando la base de datos esté completamente implementada.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
+
 public final class MailServiceMock implements IMailService {
 
     private List<Mail> mailList = new ArrayList<>();
@@ -41,7 +47,10 @@ public final class MailServiceMock implements IMailService {
     public MailServiceMock(Context context) {
         Gson gson = new Gson();
 
-        //CREATION OF MAIL LIST
+        /**
+         * CREATION OF MAIL LIST
+         */
+
 
         mailListType = new TypeToken<ArrayList<Mail>>() {
         }.getType();
@@ -50,7 +59,9 @@ public final class MailServiceMock implements IMailService {
 
         generatedJsonMailList = context.getSharedPreferences("MockPreferences", Context.MODE_PRIVATE).getString("mailList", "");
 
-        //generatedJsonMailList = ""; quitar comentarios si quieres crear correos nuevos.
+        /**
+         * quitar abajo comentario si quieres crear correos ficticios totalmente nuevos.
+         */
         //generatedJsonMailList = "";
         if (generatedJsonMailList == null || generatedJsonMailList.equals("")) {
             for (int i = 0; i <= 90; i++) {
@@ -68,9 +79,10 @@ public final class MailServiceMock implements IMailService {
         mailList = gson.fromJson(generatedJsonMailList, mailListType);
         Collections.sort(mailList, Collections.reverseOrder());
 
-
+        /**
+         * CREATION OF FOLDER LIST
+         */
         /*
-        //CREATION OF FOLDER LIST
         Type folderListType = new TypeToken<ArrayList<ISelectedMailFolder>>() {
         }.getType();
 
@@ -79,6 +91,9 @@ public final class MailServiceMock implements IMailService {
 
         if (generatedJsonFolderList == null||generatedJsonFolderList.equals("")) {
 */
+        /**
+         * Se crean las carpetas de la base de datos ficticia
+         */
         MailFolderInfo inboxFolder = new MailFolderInfo("0", context.getResources().getString(R.string.inbox), false);
         folderList.add(inboxFolder);
 
@@ -97,6 +112,9 @@ public final class MailServiceMock implements IMailService {
         MailFolderInfo trashFolder = new MailFolderInfo("5", context.getResources().getString(R.string.bin), false);
         folderList.add(trashFolder);
 
+        /**
+         * Como alternativa, para que no desaparezcan las guardo en un json en las preferencias (Esto es temporal)
+         */
            /* String jsonFolderList = gson.toJson(mailList);
             PreferenceManager.getDefaultSharedPreferences(context).edit()
                     .putString("folderList", jsonFolderList).apply();
@@ -106,10 +124,16 @@ public final class MailServiceMock implements IMailService {
 
         }
 
+
         folderList =Collections.unmodifiableList(gson.fromJson(generatedJsonFolderList,folderListType));
 */
     }
 
+    /**
+     * Este método devuelve un email a partir de un identificador que se recibe por parámetro.
+     * @param mailId
+     * @return
+     */
     @Override
     public IMail getMail(String mailId) {
         IMail mail = null;
@@ -121,6 +145,12 @@ public final class MailServiceMock implements IMailService {
         return mail;
     }
 
+    /**
+     * Este método devuelve los contenedores de los mails que van a aparecer en la bandeja de entrada.
+     * Utilizo estos contenedores para no tener que cargar totalmente los emails, solo la información necesaria.
+     * @param folderId
+     * @return
+     */
     @Override
     public List<IMailContainer> getMailContainers(String folderId) {
         List<IMailContainer> containers = new ArrayList<>();
@@ -138,6 +168,10 @@ public final class MailServiceMock implements IMailService {
         return containers;
     }
 
+    /**
+     * Este método guarda un email que se recibe por parámetro en la base de datos ficticia
+     * @param mMail
+     */
     @Override
     public void createMail(IMail mMail) {
         if (!mailList.contains(mMail)) {

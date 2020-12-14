@@ -19,6 +19,11 @@ import com.celerapps.celermail.inboxGroup.search.presenter.SearchPresenterImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase define la pantalla de búsqueda en la aplicación.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class SearchActivity extends AppCompatActivity implements SearchView {
 
     private Spinner spEmailSections;

@@ -26,6 +26,12 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Esta clase define la recycler view con todas las cabeceras de emails.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
+
 public class MailContainerRecyclerViewAdapter extends RecyclerView.Adapter<MailContainerRecyclerViewAdapter.ViewHolder> {
 
     private List<IMailContainer> headersList;
@@ -52,7 +58,9 @@ public class MailContainerRecyclerViewAdapter extends RecyclerView.Adapter<MailC
         holder.mBodyText.setText(this.headersList.get(position).getBodyText());
         holder.mView.setBackgroundResource(getMailBackground(holder.mItem));
 
-
+        /**
+         * A continuación se pasa la fecha que viene en milisegundos a una fecha y una hora para mostrarlas bien formateadas.
+         */
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(headersList.get(position).getDateTimeInMs());
 
@@ -67,6 +75,7 @@ public class MailContainerRecyclerViewAdapter extends RecyclerView.Adapter<MailC
             holder.mView.setBackgroundResource(R.color.dodgerBlue);
             return true;
         });*/
+
 
         if (!checkBoxes.contains(holder.mCheckBox)) {
             checkBoxes.add(holder.mCheckBox);
@@ -88,11 +97,11 @@ public class MailContainerRecyclerViewAdapter extends RecyclerView.Adapter<MailC
                 Intent intent = new Intent(v.getContext(), MailActivity.class);
                 intent.putExtras(bundle);
                 v.getContext().startActivity(intent);
-
-
-
         });
 
+        /**
+         * En esta parte lo que se hace es mostrar o no la barra de botones según el estado de los checkbox
+         */
         holder.mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             boolean checked = false;
 

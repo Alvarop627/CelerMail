@@ -31,10 +31,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Esta clase define el formulario de registro de la aplicación.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
+
 public class RegFormActivity extends AppCompatActivity implements IRegFormVP.View {
 
     private Spinner spGender;
-    private Spinner spNat;
     private Spinner spCountrie;
     private IRegFormVP.Presenter presenter;
 

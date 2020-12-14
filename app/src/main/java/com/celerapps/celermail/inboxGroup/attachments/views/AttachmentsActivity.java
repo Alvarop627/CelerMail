@@ -29,6 +29,12 @@ import com.celerapps.celermail.shared.views.attachmentRow.AttachmentFragment;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+/**
+ * Esta clase define la pantalla donde añaden los adjuntos a un mail y se envía.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
+
 public class AttachmentsActivity extends AppCompatActivity implements IAttachmentsView {
 
     private static ArrayList<IAttachment> listAttachments = new ArrayList<>();
@@ -61,6 +67,10 @@ public class AttachmentsActivity extends AppCompatActivity implements IAttachmen
         fragment = new AttachmentFragment(this.listAttachments);
         setFragment(fragment,R.id.frameAttachments);
 
+        /**
+         * Se obtiene un mail que viene incompleto todavía.
+         * Más adelante se termina de rellenar con campos.
+         */
         IMail mMail = getIntent().getExtras().getParcelable("mail");
 
         Button btnAddAttachment = (Button) findViewById(R.id.btnAddAttachments);
@@ -73,6 +83,9 @@ public class AttachmentsActivity extends AppCompatActivity implements IAttachmen
         CheckBox checkBoxIsImportant = findViewById(R.id.checkBoxIsImportant);
 
         Button btnNext = findViewById(R.id.btnAttachmentsToNext);
+        /**
+         * Se termina de componer el nuevo email, se crea y se envía.
+         */
         btnNext.setOnClickListener(v -> {
             mMail.setAttachments(null);
             mMail.setSenderName(presenter.getSelectedAccountName());

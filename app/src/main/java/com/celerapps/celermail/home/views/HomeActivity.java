@@ -17,6 +17,12 @@ import com.celerapps.celermail.home.interfaces.IHomeVP;
 import com.celerapps.celermail.home.presenter.HomePresenter;
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ * Esta clase define la pantalla inicial de la aplicación.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
+
 public class HomeActivity extends AppCompatActivity implements IHomeVP.View {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -25,13 +31,9 @@ public class HomeActivity extends AppCompatActivity implements IHomeVP.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         presenter = new HomePresenter(this);
         Toolbar toolbar = findViewById(R.id.toolbar1);
-
         setSupportActionBar(toolbar);
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view_mail);

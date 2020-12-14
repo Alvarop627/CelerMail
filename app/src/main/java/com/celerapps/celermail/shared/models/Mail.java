@@ -10,7 +10,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Esta clase define un correo electrónico
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class Mail implements IMail, Parcelable {
+
 
     private String mailId;
     private String senderName, senderAddress, receiverAddress, cc, cco, subject, bodyText;
@@ -21,7 +27,18 @@ public class Mail implements IMail, Parcelable {
     private static final String REPLACEMENT = "AaEeIiOoUuNnUu";
     private String folderId;
 
-
+    /**
+     * @param senderName
+     * @param senderAddress
+     * @param receiverAddress
+     * @param cc
+     * @param cco
+     * @param subject
+     * @param bodyText
+     * @param dateTimeInMs
+     * @param isImportant
+     * @param attachments
+     */
     public Mail(String senderName, String senderAddress, String receiverAddress, String cc, String cco, String subject, String bodyText, long dateTimeInMs, Boolean isImportant, List<IAttachment> attachments) {
         this.mailId = java.util.UUID.randomUUID().toString();
         this.senderName = senderName;
@@ -37,6 +54,19 @@ public class Mail implements IMail, Parcelable {
         this.attachments = attachments;
     }
 
+    /**
+     * @param id              es el identificador del correo electrónico
+     * @param senderName      es el nombre de la persona que envía el correo
+     * @param senderAddress   es la dirección de correo del emisor
+     * @param receiverAddress es la dirección de correo del receptor
+     * @param cc              es una lista de destinatarios. Los destinatarios pueden ver todos los receptores del correo.
+     * @param cco             es una lista de destinatarios. Los destinatarios no pueden ver los demás receptores del correo.
+     * @param subject         es el asunto del correo
+     * @param bodyText        es el texto del correo
+     * @param dateTimeInMs    es la fecha en la que se envío el correo en milisegundos
+     * @param isImportant     indica si el mensaje es importante o no
+     * @param attachments     son los archivos adjuntos
+     */
     public Mail(String id, String senderName, String senderAddress, String receiverAddress, String cc, String cco, String subject, String bodyText, long dateTimeInMs, Boolean isImportant, List<IAttachment> attachments) {
         this.mailId = id;
         this.senderName = senderName;
@@ -52,9 +82,13 @@ public class Mail implements IMail, Parcelable {
         this.attachments = attachments;
     }
 
-    public Mail() {}
+    public Mail() {
+    }
 
-
+    /**
+     * @param r es un simple random.
+     * Este constructor está hecho para hacer correos aleatorios. Se usa en el mock para rellenar las secciones de la bandeja de entrada.
+     */
     public Mail(Random r) {
         //mock
         mailId = java.util.UUID.randomUUID().toString();
@@ -124,7 +158,6 @@ public class Mail implements IMail, Parcelable {
     }
 
 
-
     @Override
     public String getSenderName() {
         return senderName;
@@ -144,10 +177,12 @@ public class Mail implements IMail, Parcelable {
     public void setBodyText(String bodyText) {
         this.bodyText = bodyText;
     }
-    
-    public String getFolderId(){
+
+    public String getFolderId() {
         return folderId;
-    };
+    }
+
+    ;
 
     @Override
     public long getDateTimeInMs() {

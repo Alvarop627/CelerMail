@@ -33,6 +33,11 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 
+/**
+ * Esta clase define la bandeja de entrada.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class InboxActivity extends AppCompatActivity implements IInboxVP.View {
 
     public IInboxVP.Presenter presenter;
@@ -40,13 +45,20 @@ public class InboxActivity extends AppCompatActivity implements IInboxVP.View {
     private static View buttonsInbox;
     private String folderName;
 
+    /**
+     * Se ejecuta cuando se inicia la activity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
 
 
-
+        /**
+         * folderId es el identificador de la carpeta seleccionada
+         */
         String folderId = getIntent().getStringExtra("folderId");
         boolean isUserCreated = getIntent().getBooleanExtra("isUserCreated",false);
          if(getIntent().getStringExtra("folderName")!=null){
@@ -66,6 +78,10 @@ public class InboxActivity extends AppCompatActivity implements IInboxVP.View {
         TextView textToolbar = findViewById(R.id.txtToolbarInbox);
 
         textToolbar.setText(folderName);
+
+        /**
+         * a continuación se crean los fragmentos que se van a inflar y se asocian con el viewpager2 y los tabs
+         */
         fragmentsDescriptorCollection = new FragmentDescriptor[2];
         List<IMailContainer> mailContainers0 = presenter.getMailContainers(folderId,isUserCreated,false);
         List<IMailContainer> mailContainers1 = presenter.getMailContainers(folderId,isUserCreated,true);
@@ -92,6 +108,9 @@ public class InboxActivity extends AppCompatActivity implements IInboxVP.View {
 
         FloatingActionButton fabSearch = findViewById(R.id.fabSearch);
 
+        /**
+         * te lleva a la pantalla de búsqueda
+         */
         fabSearch.setOnClickListener(v -> {
             Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
@@ -99,7 +118,9 @@ public class InboxActivity extends AppCompatActivity implements IInboxVP.View {
 
         FloatingActionButton fabNewMail = findViewById(R.id.fabNewMail);
 
-
+        /**
+         * Te dirige a redactar un nuevo correo
+         */
         fabNewMail.setOnClickListener(v -> {
             Intent intent = new Intent(this, MailComposerActivity.class);
             startActivity(intent);
@@ -146,14 +167,24 @@ public class InboxActivity extends AppCompatActivity implements IInboxVP.View {
 
     }
 
+    /**
+     * pone visible la barra de botones. Se usa al seleccionar algún checkbox.
+     */
     public static void showInboxButtons() {
         buttonsInbox.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * pone invisible la barra de botones. Se usa al deseleccionar algún checkbox.
+     */
     public static void hideInboxButtons() {
         buttonsInbox.setVisibility(View.GONE);
     }
 
+    /**
+     * Al dar click en el botón se despliega un menú que te permite modificar varias opciones del correo en concreto.
+     * @param button
+     */
     public static void showMailOptionsMenu(Button button) {
         PopupMenu popup = new PopupMenu(button.getContext(), button);
         //Inflating the Popup using xml file

@@ -29,16 +29,26 @@ import com.celerapps.celermail.shared.interfaces.IMailFolderInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase define el menú principal de la bandeja de entrada.
+ *
+ * @author: Álvaro Reina Carrizosa
+ */
 public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP.View {
 
     public static IInboxMenuVP.Presenter presenter;
     private static FragmentManager fm;
-    private MailFolderInfoFragment defaultFoldersFragment,customFoldersFragment;
+    private MailFolderInfoFragment defaultFoldersFragment, customFoldersFragment;
     private List<IMailFolderInfo> defaultMailFolderInfoList = new ArrayList<>();
     private List<IMailFolderInfo> customMailFolderInfoList = new ArrayList<>();
     private static String selectedFolderId;
 
 
+    /**
+     * Se ejecuta cuando se inicia la activity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +58,10 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
 
         selectedFolderId = presenter.getSelectedFolderId();
         fm = getSupportFragmentManager();
-        if(!defaultMailFolderInfoList.isEmpty()){
+        if (!defaultMailFolderInfoList.isEmpty()) {
             defaultMailFolderInfoList.clear();
         }
-        if(!customMailFolderInfoList.isEmpty()){
+        if (!customMailFolderInfoList.isEmpty()) {
             customMailFolderInfoList.clear();
         }
 
@@ -59,14 +69,20 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
         defaultMailFolderInfoList = presenter.getMailFolderInfos(false);
         customMailFolderInfoList = presenter.getMailFolderInfos(true);
 
+        /**
+         * Actualiza el frame en el que se muestran las carpetas creadas por defecto
+         */
         updateFragment("defaultFoldersFragment");
-        if(defaultMailFolderInfoList!=null&& fm.findFragmentByTag("defaultFoldersFragment")==null){
+        if (defaultMailFolderInfoList != null && fm.findFragmentByTag("defaultFoldersFragment") == null) {
             defaultFoldersFragment = new MailFolderInfoFragment(defaultMailFolderInfoList);
             setFragment(defaultFoldersFragment, R.id.frameDefaultFolders, "defaultFoldersFragment");
         }
 
+        /**
+         * Actualiza el frame en el que se muestran las carpetas creadas por el usuario
+         */
         updateFragment("customFoldersFragment");
-        if(customMailFolderInfoList!=null&& fm.findFragmentByTag("customFoldersFragment")==null){
+        if (customMailFolderInfoList != null && fm.findFragmentByTag("customFoldersFragment") == null) {
             customFoldersFragment = new MailFolderInfoFragment(customMailFolderInfoList);
             setFragment(customFoldersFragment, R.id.frameCreatedFolders, "customFoldersFragment");
         }
@@ -74,14 +90,22 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
 
         updateTxtAccountInfo();
 
+        /**
+         * se cierra el menú (esta actividad) y vuelve a la bandeja de entrada
+         */
         ImageButton btnExitInboxMenu = findViewById(R.id.btnExitInboxMenu);
         btnExitInboxMenu.setOnClickListener(v -> {
             startActivity(new Intent(this, InboxActivity.class));
             overridePendingTransition(R.anim.left_in, R.anim.left_out);
         });
 
+
         ImageButton btnExitToHome = findViewById(R.id.btnExitToHome);
+        /**
+         * se cierra sesión y vuelve a la pantalla inicial
+         */
         btnExitToHome.setOnClickListener(v -> {
+            presenter.signOut();
             startActivity(new Intent(this, HomeActivity.class));
         });
 
@@ -92,12 +116,6 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
         Button btnAddFolder = findViewById(R.id.btnAddFolder);
         btnAddFolder.setOnClickListener(v -> {
             showDialog();
-        });
-
-        ImageButton btnExit = findViewById(R.id.btnExitToHome);
-        btnExit.setOnClickListener(v -> {
-            presenter.signOut();
-            startActivity(new Intent(this,HomeActivity.class));
         });
 
     }
@@ -130,18 +148,27 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
         return presenter;
     }
 
+    /**
+     *
+     * @param fragment el fragment que se quiere inflar
+     * @param idContainer identificador del layout donde se quiere inflar
+     * @param tag etiqueta de nombre que le quieres poner
+     */
     @Override
-    public void setFragment(BaseFragment fragment, int idContainer,String tag) {
-            //ataching to fragment the navigation presenter
-            fragment.attachPresenter((FragmentNavigation.Presenter) presenter);
-            //showing the presenter on screen
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(idContainer, fragment, tag)
-                    .commit();
+    public void setFragment(BaseFragment fragment, int idContainer, String tag) {
+        //ataching to fragment the navigation presenter
+        fragment.attachPresenter((FragmentNavigation.Presenter) presenter);
+        //showing the presenter on screen
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(idContainer, fragment, tag)
+                .commit();
 
     }
 
+    /**
+     * Actualiza el nombre y el email de la cuenta
+     */
     @Override
     public void updateTxtAccountInfo() {
         TextView accountName = findViewById(R.id.txtAccountName);
@@ -149,10 +176,14 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
         presenter.setMailAccountInfo(accountName, accountEmail);
     }
 
+    /**
+     * actualiza el fragmento
+     * @param tag
+     */
     @Override
     public void updateFragment(String tag) {
-        if(fm.findFragmentByTag(tag)!=null){
-        fm.beginTransaction()
+        if (fm.findFragmentByTag(tag) != null) {
+            fm.beginTransaction()
                     .detach(fm.findFragmentByTag(tag))
                     .attach(fm.findFragmentByTag(tag))
                     .commit();
@@ -160,6 +191,9 @@ public class InboxMenuActivity extends AppCompatActivity implements IInboxMenuVP
 
     }
 
+    /**
+     * Diálogo que se muestra para crear una nueva carpeta con el nombre que escribas.
+     */
     public void showDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
